@@ -1,10 +1,14 @@
 import React from "react";
 import Hero from "./Hero";
+import Ticket from "./Ticket";
+import SkiTicketBooking from "./SkiTicketBooking";
 
 export default function LandingPage() {
   return (
-    <div>
+    <main>
       <Hero />
-    </div>
+      <Ticket />
+      <SkiTicketBooking />
+    </main>
   );
 }
