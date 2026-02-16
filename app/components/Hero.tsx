@@ -103,7 +103,7 @@ export default function Hero() {
         {/* Title */}
         <h1 ref={titleRef} className="hero-title">
           CHASE THE{" "}
-          <span className="bg-gradient-to-r from-cyan-300 to-sky-500 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-cyan-100 to-sky-300 bg-clip-text text-transparent">
             HORIZON
           </span>
         </h1>

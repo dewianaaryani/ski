@@ -103,10 +103,6 @@ body {
     /* Title */
     .hero-title {
       @apply text-white text-5xl leading-14 md:text-6xl font-bold tracking-widest text-center drop-shadow-lg font-family-zendots;
-
-      span {
-        @apply text-sky-300;
-      }
     }
 
     /* Middle section */
