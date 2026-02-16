@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import SplitTextPerWord from "./SplitTextPerWord";
 
 export default function Hero() {
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -101,15 +102,14 @@ export default function Hero() {
       <div ref={contentRef} className="content opacity-0">
         {/* Title */}
         <h1 ref={titleRef} className="hero-title">
-          CHASE THE <span>HORIZON</span>
+          CHASE THE{" "}
+          <span className="bg-gradient-to-r from-cyan-300 to-sky-500 bg-clip-text text-transparent">
+            HORIZON
+          </span>
         </h1>
 
         {/* Middle */}
         <div ref={middleRef} className="middle-content">
-          <h2 className="left-text">
-            From the <br /> first lift
-          </h2>
-
           <div className="thumbnail-wrapper">
             <Image
               src="/images/thumbnail.jpg"
@@ -120,10 +120,13 @@ export default function Hero() {
               className="thumbnail"
             />
           </div>
-
-          <h2 className="right-text">
-            To the <br /> final run
-          </h2>
+          <div className="text-img">
+            <SplitTextPerWord
+              text="From the first lift"
+              className="left-text"
+            />
+            <SplitTextPerWord text="To the final run" className="right-text" />
+          </div>
         </div>
 
         {/* Subtitle */}
