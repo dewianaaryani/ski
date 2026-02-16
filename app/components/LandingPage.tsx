@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <main>
       <Hero />
-      <Ticket />
+
       <SkiTicketBooking />
     </main>
   );

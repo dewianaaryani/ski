@@ -3,6 +3,25 @@ import { Calendar1, Minus, MinusCircle, Plus } from "lucide-react";
 import React, { useState } from "react";
 
 export default function SkiTicketBooking() {
+  const [snow, setSnow] = useState<
+    {
+      top: number;
+      left: number;
+      duration: number;
+      delay: number;
+    }[]
+  >([]);
+  React.useEffect(() => {
+    const flakes = Array.from({ length: 20 }).map(() => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      duration: 3 + Math.random() * 3,
+      delay: Math.random() * 3,
+    }));
+
+    setSnow(flakes);
+  }, []);
+
   const [date, setDate] = useState("2026-04-20");
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(1);
@@ -27,39 +46,52 @@ export default function SkiTicketBooking() {
       {/* Background image layer */}
       <div className="absolute inset-0">
         <img
-          src="images/bg-ticket.png"
+          src="images/bg-plain.png"
           alt="Background"
-          className="h-full w-full object-cover object-[40%_0%] md:object-[0%_25%]"
+          className="h-full w-full object-cover object-center"
         />
       </div>
 
       {/* Header text - behind the skier */}
       <div className="absolute top-14 left-0 right-0 z-10 pt-12 px-8">
-        <h1 className="text-white text-5xl md:text-6xl font-bold tracking-widest text-center drop-shadow-lg font-zendots">
+        <h1 className="text-white text-5xl md:text-6xl font-bold tracking-widest text-center drop-shadow-lg font-family-zendots">
           BUY YOUR TICKETS NOW
         </h1>
       </div>
 
       {/* Skier subject image - on top of text */}
-      {/* <div className="hidden lg:block absolute inset-0 z-20  top-34 left-24 lg:left-46 pointer-events-none">
+      {/* Skier subject image */}
+      <div
+        className="
+  absolute inset-0 z-20 pointer-events-none
+  flex items-center justify-center
+  px-4
+"
+      >
         <img
           src="images/main-ticket.png"
           alt="Skier"
-          className="h-[660px] xl:h[990px] w-auto object-contain"
+          className="
+      object-contain
+
+      w-[108%] sm:w-[90%] md:w-[65%] lg:w-[60%] xl:w-[50%] 2xl:w-[45%]
+      max-w-4xl
+-translate-x-4
+    "
         />
-      </div> */}
+      </div>
 
       {/* Decorative snow particles */}
       <div className="absolute inset-0 z-5 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {snow.map((flake, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-white rounded-full opacity-60"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animation: `fall ${3 + Math.random() * 3}s linear infinite`,
-              animationDelay: `${Math.random() * 3}s`,
+              top: `${flake.top}%`,
+              left: `${flake.left}%`,
+              animation: `fall ${flake.duration}s linear infinite`,
+              animationDelay: `${flake.delay}s`,
             }}
           />
         ))}

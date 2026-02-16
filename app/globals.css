@@ -33,11 +33,11 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-zendots: "Zendots";
-  --font-inter: "Inter", sans-serif;
+  --font-family-zendots: "Zendots", sans-serif;
+  --font-family-inter: "Inter", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,31 +50,32 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter);
+  font-family: var(--font-family-inter);
   width: 100%;
 }
+@layer utilities {
+  /* Existing utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 
-@utility flex-center {
-  @apply flex items-center justify-center;
-}
-@utility font-zendots {
-  @apply font-zendots;
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .col-between {
+    @apply flex flex-col items-center justify-between;
+  }
+
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .flex-end {
+    @apply flex items-end justify-end;
+  }
 }
 
-@utility flex-between {
-  @apply flex items-center justify-between;
-}
-
-@utility col-between {
-  @apply flex flex-col items-center justify-between;
-}
-
-@utility col-center {
-  @apply flex flex-col items-center justify-center;
-}
-@utility flex-end {
-  @apply flex items-end justify-end;
-}
 @layer components {
   main {
     @apply overflow-hidden;
@@ -95,7 +96,7 @@ body {
     /* Main content */
     .content {
       @apply relative z-10 flex flex-col items-center text-center
-            text-white uppercase font-zendots
+            text-white uppercase font-family-zendots
             px-6 gap-8;
     }
 
