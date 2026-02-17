@@ -1,7 +1,8 @@
 import React from "react";
 import Hero from "./Hero";
-import Ticket from "./Ticket";
 import SkiTicketBooking from "./SkiTicketBooking";
+
+import Catalog from "./Catalog";
 
 export default function LandingPage() {
   return (
@@ -9,6 +10,7 @@ export default function LandingPage() {
       <Hero />
 
       <SkiTicketBooking />
+      <Catalog />
     </main>
   );
 }

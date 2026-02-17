@@ -80,6 +80,12 @@ body {
   main {
     @apply overflow-hidden;
   }
+  .header {
+    @apply text-white text-5xl leading-14 md:text-6xl font-bold tracking-widest text-center drop-shadow-lg font-family-zendots uppercase;
+  }
+  .sub-header {
+    @apply text-white/70 text-sm leading-6 md:text-xl tracking-wider text-center drop-shadow-lg uppercase font-family-inter font-normal;
+  }
   .hero-section {
     @apply relative min-h-screen w-full overflow-hidden flex items-center justify-center;
 
