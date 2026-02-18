@@ -22,14 +22,14 @@ export default function Catalog() {
         {
           id: 1,
           src: "/images/catalog/item/1.png",
-          name: "Snow Dry Helmet",
+          name: "Snow Dry Jacket",
           price: "1000",
-          position: "top-2 left-2",
+          position: "top-2 left-8",
         },
         {
           id: 2,
           src: "/images/catalog/item/2.png",
-          name: "Snow Dry Jacket",
+          name: "Snow Dry Helmet",
           price: "1000",
           position: "top-2 right-3",
         },
