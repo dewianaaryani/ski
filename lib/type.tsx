@@ -3,7 +3,8 @@ export type Product = {
   src: string;
   name: string;
   price: string;
-  position: string;
+  itemPosition: string;
+  radarPosition: string;
 };
 
 export type CatalogItem = {
