@@ -135,17 +135,13 @@ export default function ProductItem({ item }: any) {
   return (
     <div ref={containerRef} className="absolute left-0 top-0 w-full h-full">
       {/* Product */}
-      <div
+      {/* <div
         ref={productRef}
         className={`
-            bg-sky-200
-            backdrop-blur-xl
-            rounded-3xl
-            border border-white/30
-            shadow-xl
+          absolute
+     bg-blue-200 rounded-md backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100
             px-6 py-4
-            text-white
-            absolute
+            overflow-hidden
             ${item.itemPosition}
           `}
       >
@@ -158,7 +154,41 @@ export default function ProductItem({ item }: any) {
         </h3>
 
         <p className="text-xs md:text-base">${item.price}</p>
+      </div> */}
+      <div
+        ref={productRef}
+        className={`
+    absolute
+    px-6 py-4
+    rounded-2xl
+    overflow-hidden
+    backdrop-blur-lg
+    bg-white/15
+    border border-white/30
+    shadow-lg
+    transition-all duration-300
+    ${item.itemPosition}
+  `}
+      >
+        {/* fake background variation */}
+        <div className="absolute inset-0 bg-linear-to-br from-white/30 via-blue-300/10 to-transparent pointer-events-none" />
+
+        {/* top glass highlight */}
+        <div className="absolute -top-10 left-0 right-0 h-20 bg-white/40 blur-xl opacity-30 pointer-events-none" />
+
+        {/* content */}
+        <div className="relative z-10">
+          <img
+            src={item.src}
+            className="w-full h-20 md:h-32 object-contain rounded-xl mb-3"
+          />
+          <h3 className="font-semibold md:font-bold text-sm md:text-lg text-white">
+            {item.name}
+          </h3>
+          <p className="text-xs md:text-base text-white/80">${item.price}</p>
+        </div>
       </div>
+
       {/* Radar */}
       <div
         ref={radarRef}
