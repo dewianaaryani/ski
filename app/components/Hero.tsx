@@ -11,19 +11,33 @@ export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const middleRef = useRef<HTMLDivElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
-
+  const overlayRef = useRef<HTMLDivElement | null>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     const timeline = gsap.timeline({ paused: true });
 
-    // Show container first
-    if (contentRef.current) {
-      timeline.to(contentRef.current, {
+    // Overlay appears first
+    if (overlayRef.current) {
+      timeline.to(overlayRef.current, {
         opacity: 1,
-        duration: 0.4,
-        ease: "power1.out",
+        backdropFilter: "blur(10px)",
+        duration: 0.8,
+        ease: "power2.out",
       });
+    }
+
+    // Then show container
+    if (contentRef.current) {
+      timeline.to(
+        contentRef.current,
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power1.out",
+        },
+        "-=0.2",
+      );
     }
 
     // Title
@@ -68,14 +82,13 @@ export default function Hero() {
     }
 
     tl.current = timeline;
-    // Fallback: auto play after 4s
+
     const timeout = setTimeout(() => {
       playIntro();
     }, 12000);
 
     return () => clearTimeout(timeout);
   }, []);
-
   const playIntro = useCallback(() => {
     if (tl.current && !tl.current.isActive()) {
       tl.current.play();
@@ -86,7 +99,7 @@ export default function Hero() {
     <section id="hero" className="hero-section">
       {/* Video */}
       <video
-        src="/videos/hero1.mov"
+        src="/videos/hero2.mov"
         className="video-overview"
         autoPlay
         muted
@@ -96,7 +109,7 @@ export default function Hero() {
       />
 
       {/* Overlay */}
-      <div className="overlay" />
+      <div className="overlay opacity-0" ref={overlayRef} />
 
       {/* Content */}
       <div ref={contentRef} className="content opacity-0">
